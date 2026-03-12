@@ -34,7 +34,7 @@ To run this code, you will need the following installed on your machine:
 * **Deep Learning Toolbox** (Required for the `patternnet` and `train` functions)
 
 ### Data Requirements
-You must have the processed dataset file named `Final_Scored_Transactions.csv` located in your current MATLAB working directory. 
+You must have the processed dataset file named `Merged_Test_is_fraud.csv` located in your current MATLAB working directory. 
 
 The script expects this CSV to contain the following specific columns:
 * `Hour_Of_Day`: The extracted hour of the transaction (0-23).
@@ -42,7 +42,7 @@ The script expects this CSV to contain the following specific columns:
 * `ZScore_Magnitude`: The calculated Z-score for the transaction (used strictly to define the `> 2.0` anomaly threshold for the target variable).
 
 ### Running the Model
-1. Open MATLAB and ensure your "Current Folder" is set to the directory containing both the script (`Bipartite_Network.m`) and your `Final_Scored_Transactions.csv` data file.
+1. Open MATLAB and ensure your "Current Folder" is set to the directory containing both the script (`Bipartite_Network.m`) and your `Merged_Test_is_fraud.csv` data file.
 2. Open the script in the MATLAB editor.
 3. Click **Run** (or type the script name in the Command Window and hit Enter).
 
