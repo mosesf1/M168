@@ -4,7 +4,7 @@ clear; clc; close all;
 % =========================================================================
 % 1. DATA LOADING & STRICT FEATURE SEPARATION
 % =========================================================================
-filename = 'Final_Scored_Transactions.csv';
+filename = 'Merged_Test_is_fraud.csv';
 fprintf('Loading data and prepping features...\n');
 T = readtable(filename, 'VariableNamingRule', 'preserve');
 
