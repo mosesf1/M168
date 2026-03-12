@@ -222,6 +222,29 @@ weighted avg     .xxxx     .xxxx     .xxxx    xxxxx
 
 The threshold-tuning section also produces a summary table comparing the different threshold-selection strategies on the test set.
 
+# 4. How to Replicate the Isolation Forest Model
+
+This notebook trains an Isolation Forest model to detect anomalous credit card transactions using a combination of transaction-level, behavioral, geographic, and network-based features. Because Isolation Forest is an unsupervised anomaly detection method, it is trained without fraud labels and instead identifies transactions that deviate from normal behavior. The notebook includes preprocessing, missing-value imputation, feature scaling, anomaly scoring, quantile-based thresholding, and evaluation using classification metrics and ROC-AUC.
+
+## Prerequisites
+
+To run this notebook, install the following Python packages in your environment: scikit-learn, numpy, matplotlib, and pandas.
+If you are using Google Colab, the notebook may also mount Google Drive to access the dataset files.
+
+### Data Requirements
+
+You must have the processed dataset files named features_train.csv and features_test.csv located in your current working directory.
+If you are running the notebook locally, update the file paths in the notebook accordingly.
+The notebook expects these CSV files to contain a target column:
+is_fraud: binary fraud label used only for evaluation
+It also expects a set of model features including transaction amount, geographic variables, temporal variables, behavioral variables, and network-derived variables. (Examples listed above)
+The notebook drops identifier columns such as trans_num, one-hot encodes categorical variables such as category, imputes missing values using median imputation, and standard-scales the features before fitting the model.
+
+### Model Notes
+
+The Isolation Forest model is trained on the feature matrix only, typically using legitimate transactions only from the training set so that the model learns normal transaction behavior. After fitting, the notebook computes anomaly scores on the test set and classifies the most anomalous transactions as fraud using a quantile-based threshold. Fraud labels are never used during training and are reserved only for post-hoc evaluation.
+
+
 ## Notes
 - The notebook is currently configured for Google Colab through `drive.mount()`.
 - If running outside Colab, remove or modify the Google Drive mounting cells.
