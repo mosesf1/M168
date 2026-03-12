@@ -31,6 +31,7 @@ For all files in either `Data/intrinsic` or `Data/network`, use the `fraudTest1m
 In `Data/intrinsic`,
 - `Feature_Extraction.ipynb` generates `feat_train.csv` and `feat_test1m.csv`
 - `FraudRate_and_Distance.ipynb` generates `distance_train.csv` and `distance_train_1m.csv`.
+
 In `Data/network`,
 - `APATE network optimized.ipynb` generates `apate_features_train.csv` and `apate_features_test1m.csv`
 - `Bipartite Centrality (Birank) Analysis.ipynb` generates `tx_birank_priors_train.csv`, `tx_birank_priors_test1m.csv`, `card_birank.csv` and `merchant_birank.csv`
