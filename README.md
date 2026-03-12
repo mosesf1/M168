@@ -35,7 +35,7 @@ In `Data/intrinsic`,
 In `Data/network`,
 - `APATE network optimized.ipynb` generates `apate_features_train.csv` and `apate_features_test1m.csv`
 - `Bipartite Centrality (Birank) Analysis.ipynb` generates `tx_birank_priors_train.csv`, `tx_birank_priors_test1m.csv`, `card_birank.csv` and `merchant_birank.csv`
-- Reading `card_birank.csv` and `merchant_birank.csv` in `APATE network optimized.ipynb` gives 'apate_birank_features_train.csv' and 'apate_birank_features_test1m.csv'.
+- Reading `card_birank.csv` and `merchant_birank.csv` in `APATE network optimized.ipynb` gives `apate_birank_features_train.csv` and `apate_birank_features_test1m.csv`.
 
 Using `merge/merge.ipynb` can generate a consolidated features dataframe csv.
 
@@ -75,7 +75,6 @@ Precision: .xxxx
 Recall:    .xxxx
 F1 Score:  .xxxx
 ```
-
 
 ## 2. How to Replicate the XGBoost Model
 This script trains an XGBoost machine learning model to identify fraudulent transactions.
@@ -117,7 +116,7 @@ weighted avg     .xxxx    .xxxx    .xxxx     xxxxx
 ```
 
 
-# 4. How to Replicate the K-Means Clustering Model
+## 3. How to Replicate the K-Means Clustering Model
 This script runs the provided data through K-Means Clustering to detect fraudulent transactions.
 
 ### Prerequisites
@@ -156,11 +155,11 @@ True 1          xxx         xx
 Fraud rate in Cluster 1: 0.xxxx
 Fraud rate in Cluster 2: 0.xxxx
 ```
-# 4. How to Replicate the Random Forest Model
+## 4. How to Replicate the Random Forest Model
 
 This notebook trains a Random Forest classifier to identify fraudulent credit card transactions using a combination of transaction-level, behavioral, geographic, and network-based features. It includes model training, baseline evaluation, ROC and PR analysis, feature importance extraction, and validation-based threshold selection.
 
-## Prerequisites
+### Prerequisites
 To run this notebook, install the following Python packages in your environment:
 **xgboost, scikit-learn, numpy, matplotlib, pandas**
 If you are using Google Colab, the notebook also mounts Google Drive to access the dataset files.
@@ -203,12 +202,12 @@ It also expects a set of model features including transaction amount, geographic
 
 The notebook automatically separates numeric and categorical columns and applies preprocessing before model training.
 
-## Running the Model
+### Running the Model
 1. Open the notebook `RandomForest.ipynb` in Jupyter Notebook, JupyterLab, or Google Colab.
 2. Make sure the dataset files `features_train.csv` and `features_test.csv` are accessible from the path used in the notebook.
 3. Run all cells in order.
 
-## Model Details
+### Model Details
 The notebook builds a preprocessing-and-model pipeline using:
 
 - median imputation for numeric features
@@ -225,7 +224,7 @@ The baseline Random Forest model is initialized with settings including:
 - `min_samples_split=20`
 - `min_samples_leaf=5`
 
-## Expected Output
+### Expected Output
 The notebook will:
 
 1. Load training and test data
@@ -263,11 +262,15 @@ weighted avg     .xxxx     .xxxx     .xxxx    xxxxx
 
 The threshold-tuning section also produces a summary table comparing the different threshold-selection strategies on the test set.
 
-# 4. How to Replicate the Isolation Forest Model
+## Notes
+- The notebook is currently configured for Google Colab through `drive.mount()`.
+- If running outside Colab, remove or modify the Google Drive mounting cells.
+
+## 5. How to Replicate the Isolation Forest Model
 
 This notebook trains an Isolation Forest model to detect anomalous credit card transactions using a combination of transaction-level, behavioral, geographic, and network-based features. Because Isolation Forest is an unsupervised anomaly detection method, it is trained without fraud labels and instead identifies transactions that deviate from normal behavior. The notebook includes preprocessing, missing-value imputation, feature scaling, anomaly scoring, quantile-based thresholding, and evaluation using classification metrics and ROC-AUC.
 
-## Prerequisites
+### Prerequisites
 
 To run this notebook, install the following Python packages in your environment: scikit-learn, numpy, matplotlib, and pandas.
 If you are using Google Colab, the notebook may also mount Google Drive to access the dataset files.
@@ -284,9 +287,4 @@ The notebook drops identifier columns such as trans_num, one-hot encodes categor
 ### Model Notes
 
 The Isolation Forest model is trained on the feature matrix only, typically using legitimate transactions only from the training set so that the model learns normal transaction behavior. After fitting, the notebook computes anomaly scores on the test set and classifies the most anomalous transactions as fraud using a quantile-based threshold. Fraud labels are never used during training and are reserved only for post-hoc evaluation.
-
-
-## Notes
-- The notebook is currently configured for Google Colab through `drive.mount()`.
-- If running outside Colab, remove or modify the Google Drive mounting cells.
 
