@@ -17,7 +17,7 @@ Both supervised classification models and unsupervised anomaly detection models 
 Synthetic credit card transaction dataset with network-based features derived from the APATE framework.
 
 ## Structure
-- `models/` – machine learning implementations
+- `model/` – machine learning implementations
 - `Data/` – processed feature datasets
   - `intrinsic/` - generate intrinsic feature
   - `network/` - generate network feature
