@@ -22,7 +22,21 @@ Synthetic credit card transaction dataset with network-based features derived fr
   - `intrinsic/` - generate intrinsic feature
   - `network/` - generate network feature
   - `merge/` - sample code to merge the extracted features
+- `fraud_detection/` - original `fraudTest1m.csv` and `fraudTrain.csv`
 - `report/` – LaTeX project report
+
+## 0. How to Generate Features
+For all files in either `Data/intrinsic` or `Data/network`, use the `fraudTest1m.csv` and `fraudTrain.csv`. Update the paths accordingly.
+
+In `Data/intrinsic`,
+- `Feature_Extraction.ipynb` generates `feat_train.csv` and `feat_test1m.csv`
+- `FraudRate_and_Distance.ipynb` generates `distance_train.csv` and `distance_train_1m.csv`.
+In `Data/network`,
+- `APATE network optimized.ipynb` generates `apate_features_train.csv` and `apate_features_test1m.csv`
+- `Bipartite Centrality (Birank) Analysis.ipynb` generates `tx_birank_priors_train.csv`, `tx_birank_priors_test1m.csv`, `card_birank.csv` and `merchant_birank.csv`
+- Reading `card_birank.csv` and `merchant_birank.csv` in `APATE network optimized.ipynb` gives 'apate_birank_features_train.csv' and 'apate_birank_features_test1m.csv'.
+
+Using `merge/merge.ipynb` can generate a consolidated features dataframe csv.
 
 ## 1. How to Replicate the Bipartite Neural Network
 
