@@ -1,5 +1,5 @@
-# M168
-Repository for Fraud Detection using Network Features for Synthetic Data: A Comparative Study
+# Fraud Detection using Network Features for Synthetic Data: A Comparative Study
+## M168 Final Project 
 
 This repository contains the implementation & analysis for credit card fraud detection using machine learning & network-based transaction features. Our project evaluates both supervised & unsupervised models on a large synthetic credit card transaction dataset & compares their effectiveness in identifying fraudulent transactions.
 
