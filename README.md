@@ -56,3 +56,44 @@ PR-AUC:    .xxxx
 Precision: .xxxx
 Recall:    .xxxx
 F1 Score:  .xxxx
+
+
+
+## How to Replicate the XGBoost Model
+This script trains an XGBoost machine learning model to identify fraudulent transactions.
+
+### Prerequisites
+To run this code, you will need the following installed in your environment:
+**xgboost, sklearn**, numpy, matplotlib, pandas**
+
+### Data Requirements
+ You must have the processed dataset files named 'Merged_train_is_fraud.csv' and 'Merged_Test_is_fraud.csv' located in your current working directory.
+
+### Running the Model
+1. Open your IDE and ensure the folder you have open contains both the script (`XGBoost.ipynb`) and your 'Merged_train_is_fraud.csv' and 'Merged_Test_is_fraud.csv' data files.
+2. For the most optimized hyperparameters, ensure the parameters in the cell labelled # p3.2 are the only parameters being used.
+3. Run all cells
+
+### Expected Output
+The script will train the model using an ensemble of decision trees. Once finished, it will output the results based on the metrics: ROC_AUC, PR_AUC, then show the Confusion Matrix produced and accuracy of the model, and our classification of precision, recall, and f-1 score rounded to 4 decimal places:
+'''
+ROC_AUC x.xxxx
+PR_AUC x.xxxx
+
+Confusion Matrix 
+ [[xxxxx   xx]
+ [   xx   xxx]] 
+
+Accuracy of the model is: xx.xxxx 
+
+Classification 
+               precision    recall  f1-score   support
+
+           0     .xxxx    .xxxx    .xxxx     87287
+           1     .xxxx    .xxxx    .xxxx       358
+
+    accuracy                         .xxxx     87645
+   macro avg     .xxxx    .xxxx    .xxxx     87645
+weighted avg     .xxxx    .xxxx    .xxxx     87645
+'''
+
