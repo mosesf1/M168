@@ -84,7 +84,7 @@ To run this code, you will need the following installed in your environment:
 **xgboost, sklearn, numpy, matplotlib, pandas**
 
 ### Data Requirements
- You must have the processed dataset files named 'Merged_train_is_fraud.csv' and 'Merged_Test_is_fraud.csv' located in your current working directory.
+You must have the processed dataset files named 'Merged_Test_is_fraud.csv' located in your current working directory and 'Merged_train_is_fraud.csv' from this drive: https://drive.google.com/file/d/1-9BojNBl8m2vPDQnjBylrVV2C0U7bcZF/view?usp=sharing
 
 ### Running the Model
 1. Open your IDE and ensure the folder you have open contains both the script (`XGBoost.ipynb`) and your 'Merged_train_is_fraud.csv' and 'Merged_Test_is_fraud.csv' data files.
