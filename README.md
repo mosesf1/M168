@@ -19,6 +19,8 @@ Synthetic credit card transaction dataset with network-based features derived fr
 ## Structure
 - `models/` – machine learning implementations
 - `Data/` – processed feature datasets
+  - `intrinsic/` - generate intrinsic feature
+  - `network/ - generate network feature
 - `report/` – LaTeX project report
 
 ## How to Replicate the Bipartite Neural Network
