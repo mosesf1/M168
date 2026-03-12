@@ -115,7 +115,47 @@ Classification
    macro avg     .xxxx    .xxxx    .xxxx     xxxxx
 weighted avg     .xxxx    .xxxx    .xxxx     xxxxx
 ```
-# 3. How to Replicate the Random Forest Model
+
+
+# 4. How to Replicate the K-Means Clustering Model
+This script runs the provided data through K-Means Clustering to detect fraudulent transactions.
+
+### Prerequisites
+To run this code, you will need the following installed on your machine:
+* **MATLAB** (R2021a or newer recommended)
+* **Statistics and Machine Learning ToolBox**
+
+### Data Requirements
+ You must have the processed dataset files named 'Merged_train_is_fraud.csv' and 'Merged_Test_is_fraud.csv' located in any drive on your machine. 
+ 
+ ### Running the Model
+1. Open the Matlab IDE, where you will put either k means code of the two into the compiler
+2. The next part depends on which you have selected. Follow accordingly
+-If running k_means_trainset simply run the code and select the "Merged_train_is_fraud.csv" wherever it is located on your machine, it will prompt you to look for it in one of your drives.
+-If running k_means_firstmonth_testset simply run the code and select the "Merged_test_is_fraud.csv" wherever it is located on your machine, it will prompt you to look for it in one of your drives.
+4. The results will now pop up in the command window.
+
+## Expected Outcome 
+
+Cluster 1 size: xxxxxxxx
+Cluster 2 size: xxxxx
+
+Chosen mapping: Cluster 1 -> Legit (0), Cluster 2 -> Fraud (1)
+
+===== Evaluation Against is_fraud =====
+Accuracy : 0.xxxx
+Precision: 0.xxxx
+Recall   : 0.xxxx
+F1 Score : 0.xxxx
+
+Confusion Matrix (rows = true, cols = predicted)
+           Pred 0     Pred 1
+True 0        xxxxx      xxxxx
+True 1          xxx         xx
+
+Fraud rate in Cluster 1: 0.xxxx
+Fraud rate in Cluster 2: 0.xxxx
+# 4. How to Replicate the Random Forest Model
 
 This notebook trains a Random Forest classifier to identify fraudulent credit card transactions using a combination of transaction-level, behavioral, geographic, and network-based features. It includes model training, baseline evaluation, ROC and PR analysis, feature importance extraction, and validation-based threshold selection.
 
