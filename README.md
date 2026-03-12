@@ -24,7 +24,7 @@ Synthetic credit card transaction dataset with network-based features derived fr
   - `merge/` - sample code to merge the extracted features
 - `report/` – LaTeX project report
 
-## How to Replicate the Bipartite Neural Network
+## 1. How to Replicate the Bipartite Neural Network
 
 This script trains a bipartite neural network to detect anomalous transactions. To prevent data leakage, the model is trained strictly on temporal and magnitude-ratio features, while the Z-score is isolated as the ground-truth target label.
 
@@ -62,7 +62,7 @@ F1 Score:  .xxxx
 ```
 
 
-## How to Replicate the XGBoost Model
+## 2. How to Replicate the XGBoost Model
 This script trains an XGBoost machine learning model to identify fraudulent transactions.
 
 ### Prerequisites
@@ -100,4 +100,114 @@ Classification
    macro avg     .xxxx    .xxxx    .xxxx     xxxxx
 weighted avg     .xxxx    .xxxx    .xxxx     xxxxx
 ```
+# 3. How to Replicate the Random Forest Model
+
+This notebook trains a Random Forest classifier to identify fraudulent credit card transactions using a combination of transaction-level, behavioral, geographic, and network-based features. It includes model training, baseline evaluation, ROC and PR analysis, feature importance extraction, and validation-based threshold selection.
+
+## Prerequisites
+To run this notebook, install the following Python packages in your environment:
+**xgboost, scikit-learn, numpy, matplotlib, pandas**
+If you are using Google Colab, the notebook also mounts Google Drive to access the dataset files.
+
+### Data Requirements
+ You must have the processed dataset files named 'Merged_train_is_fraud.csv' and 'Merged_Test_is_fraud.csv' located in your current working directory.
+
+If you are running the notebook locally, update the file path in the notebook accordingly.
+
+The notebook expects these CSV files to contain a target column:
+
+- `is_fraud`: binary fraud label
+
+It also expects a set of model features including transaction amount, geographic variables, temporal variables, behavioral variables, and network-derived variables. Examples from the notebook include:
+
+- `amt`
+- `lat`
+- `long`
+- `city_pop`
+- `category`
+- `unix_time`
+- `merch_lat`
+- `merch_long`
+- `log_amt`
+- `merchant_txn_count_past`
+- `merchant_unique_cards_past`
+- `card_txn_count_1h`
+- `amt_to_card_median`
+- `amt_to_category_median`
+- `hour_of_day`
+- `day_of_week`
+- `is_weekend`
+- `dist_home_merchant_km`
+- `recency_sec`
+- `dist_prev_merchant_km`
+- `implied_speed_kmh`
+- `State Fraud Rate`
+- `Avg Card Dist (km)`
+- `Dist Ratio`
+
+The notebook automatically separates numeric and categorical columns and applies preprocessing before model training.
+
+## Running the Model
+1. Open the notebook `RandomForest.ipynb` in Jupyter Notebook, JupyterLab, or Google Colab.
+2. Make sure the dataset files `features_train.csv` and `features_test.csv` are accessible from the path used in the notebook.
+3. Run all cells in order.
+
+## Model Details
+The notebook builds a preprocessing-and-model pipeline using:
+
+- median imputation for numeric features
+- most-frequent imputation for categorical features
+- one-hot encoding for categorical variables
+- a `RandomForestClassifier`
+
+The baseline Random Forest model is initialized with settings including:
+
+- `n_estimators=100`
+- `random_state=42`
+- `n_jobs=-1`
+- `class_weight='balanced_subsample'`
+- `min_samples_split=20`
+- `min_samples_leaf=5`
+
+## Expected Output
+The notebook will:
+
+1. Load training and test data
+2. Train the Random Forest pipeline
+3. Report baseline evaluation metrics on the test set
+4. Plot ROC curves, including a zoomed low-FPR ROC view
+5. Display top transformed feature importances
+6. Perform validation-based threshold tuning using three strategies:
+   - best F1 on validation
+   - best precision subject to recall ≥ 0.80
+   - best recall subject to FPR ≤ 0.1%
+7. Refit on the full training data and evaluate all selected thresholds on the test set
+
+Typical printed output includes metrics in a format similar to:
+
+```text
+=== Random Forest Baseline Results ===
+ROC-AUC: x.xxxxxx
+PR-AUC : x.xxxxxx
+
+Confusion Matrix @ threshold=0.5
+[[xxxxx   xx]
+ [   xx  xxx]]
+
+Classification Report
+              precision    recall  f1-score   support
+
+           0     .xxxx     .xxxx     .xxxx    xxxxx
+           1     .xxxx     .xxxx     .xxxx      xxx
+
+    accuracy                         .xxxx    xxxxx
+   macro avg     .xxxx     .xxxx     .xxxx    xxxxx
+weighted avg     .xxxx     .xxxx     .xxxx    xxxxx
+```
+
+The threshold-tuning section also produces a summary table comparing the different threshold-selection strategies on the test set.
+
+## Notes
+- The notebook is currently configured for Google Colab through `drive.mount()`.
+- If running outside Colab, remove or modify the Google Drive mounting cells.
 
