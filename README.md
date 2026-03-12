@@ -136,7 +136,7 @@ To run this code, you will need the following installed on your machine:
 4. The results will now pop up in the command window.
 
 ## Expected Outcome 
-
+```
 Cluster 1 size: xxxxxxxx
 Cluster 2 size: xxxxx
 
@@ -155,6 +155,7 @@ True 1          xxx         xx
 
 Fraud rate in Cluster 1: 0.xxxx
 Fraud rate in Cluster 2: 0.xxxx
+```
 # 4. How to Replicate the Random Forest Model
 
 This notebook trains a Random Forest classifier to identify fraudulent credit card transactions using a combination of transaction-level, behavioral, geographic, and network-based features. It includes model training, baseline evaluation, ROC and PR analysis, feature importance extraction, and validation-based threshold selection.
